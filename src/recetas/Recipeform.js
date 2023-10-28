@@ -16,7 +16,6 @@ class RecipeForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes enviar la receta al servidor o realizar alguna acción con ella.
     console.log('Receta ingresada:', this.state);
     this.setState({ title: '', ingredients: '', instructions: '' });
   }

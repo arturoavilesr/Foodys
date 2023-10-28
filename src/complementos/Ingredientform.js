@@ -14,7 +14,7 @@ class IngredientForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes enviar el ingrediente al servidor o realizar alguna acción con él.
+    
     console.log('Ingrediente ingresado:', this.state.ingredient);
     this.setState({ ingredient: '' });
   }

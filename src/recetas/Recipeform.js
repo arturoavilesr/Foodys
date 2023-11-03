@@ -1,42 +1,78 @@
 import React, { Component } from 'react';
+import './RecipeForm.css'; 
 
 class RecipeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      ingredients: '',
-      instructions: ''
+      ingredients: [
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' }
+      ]
     };
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const newIngredients = [...this.state.ingredients];
+    newIngredients[index][name] = value;
+
+    this.setState({ ingredients: newIngredients });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('Receta ingresada:', this.state);
-    this.setState({ title: '', ingredients: '', instructions: '' });
+ 
+    this.setState({
+      title: '',
+      ingredients: [
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' },
+        { name: '', amount: '', unit: '' }
+      ]
+    });
   }
 
   render() {
     return (
-      <div>
-        <h2>Formulario de Recetas</h2>
+      <div className="recipe-form">
+        <h2>Receta</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
             Título de la Receta:
-            <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+            <input type="text" name="title" value={this.state.title} onChange={(e) => this.setState({ title: e.target.value })} />
           </label>
-          <label>
-            Ingredientes:
-            <textarea name="ingredients" value={this.state.ingredients} onChange={this.handleChange} />
-          </label>
-          <label>
-            Instrucciones:
-            <textarea name="instructions" value={this.state.instructions} onChange={this.handleChange} />
-          </label>
+
+          <h3>Ingredientes</h3>
+
+          {this.state.ingredients.map((ingredient, index) => (
+            <div key={index}>
+              <label>
+                Nombre del Ingrediente:
+                <input type="text" name="name" value={ingredient.name} onChange={(e) => this.handleChange(e, index)} />
+              </label>
+              <label>
+                Cantidad:
+                <input type="text" name="amount" value={ingredient.amount} onChange={(e) => this.handleChange(e, index)} />
+              </label>
+              <label>
+                Unidad:
+                <select name="unit" value={ingredient.unit} onChange={(e) => this.handleChange(e, index)}>
+                  <option value="">Seleccionar</option>
+                  <option value="kg">kg</option>
+                  <option value="pzas">pzas</option>
+                </select>
+              </label>
+            </div>
+          ))}
+
           <button type="submit">Agregar Receta</button>
         </form>
       </div>
@@ -45,3 +81,4 @@ class RecipeForm extends Component {
 }
 
 export default RecipeForm;
+

@@ -1,26 +1,4 @@
-import React, { Component } from 'react';
-
-class IngredientForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ingredient: ''
-    };
-  }
-
-  handleChange = (e) => {
-    this.setState({ ingredient: e.target.value });
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    
-    console.log('Ingrediente ingresado:', this.state.ingredient);
-    this.setState({ ingredient: '' });
-  }
-
-  render() {
-    return (
+function IngredientForm(){
       <div>
         <h2>Formulario de Ingredientes</h2>
         <form onSubmit={this.handleSubmit}>
@@ -31,10 +9,7 @@ class IngredientForm extends Component {
           <button type="submit">Agregar Ingrediente</button>
         </form>
       </div>
-    );
-  }
 }
-
 export default IngredientForm;
 
 

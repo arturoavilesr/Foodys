@@ -1,0 +1,17 @@
+import React, { Component } from 'react';
+
+class PurchaseForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      purchases: [],
+      currentPurchase: {
+        ingredient: '',
+        quantity: '',
+        unit: '',
+        unitPrice: '',
+        tax: ''
+      },
+      total: 0
+    };
+  }

@@ -15,7 +15,7 @@ class IngredientForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('Ingrediente ingresado:', this.state);
-    // Aquí puedes realizar acciones adicionales con el ingrediente
+
     this.setState({ name: '', cost: '', unit: '' });
   }
 
@@ -38,5 +38,5 @@ class IngredientForm extends Component {
               <option value="">Seleccionar</option>
               <option value="kg">kg</option>
               <option value="unidad">unidad</option>
-              {/* Otras unidades podrían ser agregadas aquí */}
+       
             </select>

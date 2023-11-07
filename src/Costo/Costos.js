@@ -29,3 +29,14 @@ class IngredientForm extends Component {
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
           </label>
           <label>
+  Costo:
+            <input type="text" name="cost" value={this.state.cost} onChange={this.handleChange} />
+          </label>
+          <label>
+            Unidad:
+            <select name="unit" value={this.state.unit} onChange={this.handleChange}>
+              <option value="">Seleccionar</option>
+              <option value="kg">kg</option>
+              <option value="unidad">unidad</option>
+              {/* Otras unidades podrían ser agregadas aquí */}
+            </select>
